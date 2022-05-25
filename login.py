@@ -14,29 +14,21 @@ def get_login_name(first, last, idnumber):
 # Funkcja valid_password() akceptuje argument
 # w postaci hasła i zwraca wartość True lub False
 def valid_password(password):
-    # Przypisanie wartości False zmiennym boolowskim
-    correct_length = False
-    has_uppercase = False
-    has_lowercase = False
-    has_digit = False
-    # Rozpoczęcie weryfikacji hasła. Na początku
-    # sprawdzana jest jego długość
-    if len(password) > 7:
-        correct_length = True
-    # Trzeba sprawdzić każdy znak
-    # i przypisać odpowiednią wartość
-    # po znalezieniu wymaganego znaku
-    for ch in password:
-        if ch.isupper():
-            has_uppercase = True
-    if ch.islower():
-        has_lowercase = True
-    if ch.isdigit():
-        has_digit = True
-    # Ustalenie, czy wszystkie wymagania zostały spełnione
-    if correct_length and has_uppercase and has_lowercase and has_digit:
-        is_valid = True
-    else:
-        is_valid = False
-    # Zwrot zmiennej is_valid
-    return is_valid
+    is_digit = False
+    is_lower = False
+    is_upper = False
+
+
+    for symbol in password:
+        if symbol.isdigit():
+            is_digit = True
+        elif symbol.islower():
+            is_lower = True
+        elif symbol.isupper():
+            is_upper = True
+
+    is_not_valid = True
+    if is_digit and is_lower and is_upper:
+        is_not_valid = False
+
+    return is_not_valid

@@ -1,4 +1,5 @@
 import login
+
 def main():
  password = input('Podaj hasło: ')
  while not login.valid_password(password):
